@@ -1,0 +1,23 @@
+nav{
+  padding: 22px 110px 0;
+}
+
+menu{
+  margin-top: 37px;
+}
+
+a{
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Raleway", serif;
+}
+
+img{
+  width: 80px;
+  height: 80px;
+}
+
+.left-menu, .right-menu{
+  width: 416px;
+  justify-content: space-between;
+}

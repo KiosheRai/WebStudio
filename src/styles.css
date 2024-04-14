@@ -1,0 +1,60 @@
+body{
+  background: #181918;
+  color: #FFFFFF;
+}
+
+a, a:hover{
+  text-decoration: none;
+  color: inherit;
+  transition: .2s ease-in-out;
+}
+
+a:hover{
+  color: rgb(127, 123, 248);
+}
+
+.btn{
+  outline: none;
+  border: none;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-info{
+  padding: 18px 64px;
+  font-family: 'Raleway', "Raleway", serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+
+  color: #FFFFFF;
+
+  border-radius: 8px;
+}
+
+.btn-primary{
+  background: rgba(127, 123, 248, 0.8);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary{
+  background: none;
+  outline: 1px rgba(127, 123, 248, 0.8) solid;
+}
+
+.btn-info{
+  background: none;
+  text-decoration: underline;
+}
+
+.btn:first-child:hover, :not(.btn-check)+.btn:hover{
+  background: rgba(127, 123, 248, 1);
+  border: none;
+}
+
+.btn-info:hover{
+  text-decoration: underline;
+  background: none !important;
+  color: rgba(127, 123, 248, 1) !important;
+}
