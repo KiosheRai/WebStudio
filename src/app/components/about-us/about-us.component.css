@@ -1,67 +1,18 @@
 .about-us{
-  padding: 80px 0;
-  text-align: center;
-  background: white;
+  padding: 60px 0;
+  background: rgb(0, 0, 0);
+  color: #fff;
+  font-family: "Raleway", serif;
 }
 
-.about-us-title{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.3));
-}
-
-.about-us-title img{
-  width: 110px;
-  height: 110px;
-}
-
-
-.about-us-title h3{
-  font-family: 'Raleway', "Raleway", serif;
+h3{
+  font-family: 'Roboto', serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 32px;
   line-height: 32px;
 }
 
-.about-us-title span{
-  top: -20px;
-  font-size: 16px;
-  line-height: normal;
-}
-
-.about-us-text{
-  max-width: 992px;
-  margin: auto;
-}
-
-.about-us-text-main{
-  font-family: 'Raleway', "Raleway", serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
-
-  text-align: center;
-  letter-spacing: 0.05em;
-  font-feature-settings: 'hwid' on;
-
-  margin-bottom: 30px;
-
-  color: rgb(233, 233, 233);
-}
-
-.about-us-text-subtext{
-  font-family: 'Raleway', "Raleway", serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 28px;
-  /* identical to box height, or 139% */
-
-  text-align: center;
-  letter-spacing: 0.05em;
-  font-feature-settings: 'hwid' on;
+li{
+	line-height: 200%;
 }

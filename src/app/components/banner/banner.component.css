@@ -1,6 +1,9 @@
 .banner{
-  height: 100vh;
+  height: 90vh;
   padding-top: 10px;
+
+  color: #fff;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
 }
 
 .banner-img{
@@ -9,8 +12,8 @@
 
   height: 100%;
   width: 100%;
-  /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 50.09%, rgba(0, 0, 0, 0.4) 100%), url("src/assets/references/banner.jpg"); */
-  filter: blur(2px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50.09%, rgba(0, 0, 0, 0.7) 100%), url("src/assets/images/Background.jpg");
+  background-size: fill;
   z-index: -100;
 }
 
@@ -19,7 +22,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding-top: 18px;
-  height: calc(100% - 110px);
+  height: calc(100% - 20px);
 }
 
 .banner-text{
@@ -27,9 +30,9 @@
 }
 
 .banner-title{
-  font-family: 'Press Start 2P', "Raleway", serif;
+  font-family: "Raleway", serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 48px;
   line-height: 48px;
 
@@ -40,7 +43,7 @@
 }
 
 .banner-subtitle{
-  font-family: 'Raleway', "Raleway", serif;
+  font-family: 'Raleway', serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -48,7 +51,6 @@
   text-align: center;
   letter-spacing: 0.02em;
   text-transform: lowercase;
-
 }
 
 .banner-arrowDown{

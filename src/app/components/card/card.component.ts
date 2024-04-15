@@ -1,21 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IFraction} from "../../models/ifraction";
+import { Component, Input, OnInit } from '@angular/core';
+import { Project } from 'src/app/models/Projects';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+	selector: 'app-card',
+	templateUrl: './card.component.html',
+	styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit{
-  @Input() entity : IFraction
+export class CardComponent implements OnInit {
+	@Input() entity: Project
 
-  fractionCard : IFraction
+	ProjectCard: Project
 
-  ngOnInit(){
-    this.fractionCard = {...this.entity}
-
-    if(this.fractionCard.subtitle.trim().length >= 40){
-      this.fractionCard.subtitle = this.fractionCard.subtitle.substring(0,40) + '...'
-    }
-  }
+	ngOnInit() {
+		this.ProjectCard = { ...this.entity }
+	}
 }

@@ -1,16 +1,11 @@
 <div class="card">
-  <div class="card-body">
-    <img src="assets/references/TestImg.jpg" [alt]="fractionCard.title">
-    <p class="card-title">{{fractionCard.title}}</p>
-    <p class="card-subtitle">
-      {{fractionCard.subtitle}}
-    </p>
-    <p class="card-title-owner mb-0">Основатель:</p>
-    <p class="card-owner mb-0">{{fractionCard.owner}}</p>
-  </div>
-  <div class="card-footer">
-    <p class="card-coordinates mb-0">x{{fractionCard.coordinatesX}} y{{fractionCard.coordinatesY}}</p>
-
-    <a [routerLink]="'fractions/'+fractionCard.id"><img src="assets/icons/read-more.svg" alt="read more"></a>
-  </div>
+	<div class="card-image">
+		<img [src]="ProjectCard.urlPicture" alt="project" />
+	</div>
+	<div class="card-body">
+		<p class="card-title text-uppercase">{{ ProjectCard.name }}</p>
+		<p class="card-subtitle">
+			{{ ProjectCard.description }}
+		</p>
+	</div>
 </div>

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {TestData as data} from "../../data/test-data";
+import { Component } from '@angular/core';
+import { ProjectsList, PersonsList } from "../../data/ProjectsList";
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+	selector: 'app-home-page',
+	templateUrl: './home-page.component.html',
+	styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
-  cards = data.filter((u, i) => i < 12)
+	cards = ProjectsList.filter((u, i) => i < 12)
+	personsList = PersonsList.filter((u, i) => i < 12)
 }

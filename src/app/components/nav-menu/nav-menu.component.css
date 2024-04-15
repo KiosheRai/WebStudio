@@ -1,20 +1,17 @@
 nav{
-  padding: 22px 110px 0;
-}
-
-menu{
-  margin-top: 37px;
+	padding-top: 30px;
 }
 
 a{
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Raleway", serif;
 }
 
 img{
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
+  transform: translateY(-10px);
 }
 
 .left-menu, .right-menu{

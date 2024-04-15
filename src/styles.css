@@ -1,6 +1,7 @@
 body{
-  background: #181918;
-  color: #FFFFFF;
+	background: rgb(255,255,255);
+  	color: #181918;
+	font-weight: 500;
 }
 
 a, a:hover{
@@ -10,7 +11,7 @@ a, a:hover{
 }
 
 a:hover{
-  color: rgb(127, 123, 248);
+  color: rgb(161, 118, 0);
 }
 
 .btn{
@@ -34,13 +35,13 @@ a:hover{
 }
 
 .btn-primary{
-  background: rgba(127, 123, 248, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .btn-secondary{
   background: none;
-  outline: 1px rgba(127, 123, 248, 0.8) solid;
+  outline: 1px rgba(153, 153, 153, 0.8) solid;
 }
 
 .btn-info{
@@ -49,12 +50,12 @@ a:hover{
 }
 
 .btn:first-child:hover, :not(.btn-check)+.btn:hover{
-  background: rgba(127, 123, 248, 1);
+  background: rgb(161, 118, 0);
   border: none;
 }
 
 .btn-info:hover{
   text-decoration: underline;
   background: none !important;
-  color: rgba(127, 123, 248, 1) !important;
+  color: rgba(161, 118, 0, 1) !important;
 }

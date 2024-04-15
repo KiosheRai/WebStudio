@@ -1,29 +1,32 @@
 .card {
-  padding: 16px;
-  border: 1px solid transparent;
+  padding: 0px;
   border-radius: 10px;
-  background: rgb(35, 35, 35);
+  border: solid transparent;
+
+  overflow: hidden;
+  border-radius: 32px;
+
+  color: #fff;
 }
 
 .card-body {
-  padding: 0;
+	background: black;
+  padding: 20px;
 }
 
-.card-body img {
+img {
   width: 100%;
   height: 230px;
 
-  overflow: hidden;
-  border-radius: 8px 8px 0 0;
-  display: block;
+  object-fit: cover;
 
-  margin-bottom: 20px;
+  display: block;
 }
 
 .card-title {
   height: 60px;
 
-  font-family: 'Press Start 2P', "Raleway", serif;
+  font-family: "Roboto", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -33,7 +36,7 @@
 }
 
 .card-subtitle {
-  font-family: 'Roboto', "Raleway", serif;
+  font-family: "Raleway", serif;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -42,49 +45,4 @@
   letter-spacing: 0.05em;
 
   margin-bottom: 32px;
-  color: #899599;
-}
-
-.card-title-owner {
-  font-family: 'Press Start 2P', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-
-  letter-spacing: 0.05em;
-
-  color: #7E7AF5;
-}
-
-.card-owner {
-  font-family: 'Press Start 2P', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-
-  letter-spacing: 0.05em;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 36px 0 16px;
-  border: none;
-}
-
-.card-footer img {
-  width: 40px;
-}
-
-.card-coordinates {
-  font-family: 'Press Start 2P', "Raleway", serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 4px;
-
-  color: rgb(113, 124, 237);
 }
