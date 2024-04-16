@@ -18,6 +18,8 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 import { FractionsPageComponent } from './pages/fractions-page/fractions-page.component';
 import { TilesComponent } from './components/tiles/tiles.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { FeaturesComponent } from './components/features/features.component';
+import { StartWithComponent } from './components/start-with/start-with.component';
 
 @NgModule({
 	declarations: [
@@ -36,6 +38,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 		FractionsPageComponent,
 		TilesComponent,
 		NotFoundPageComponent,
+  FeaturesComponent,
+  StartWithComponent,
 	],
 	imports: [
 		BrowserModule,

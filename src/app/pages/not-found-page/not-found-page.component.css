@@ -1,17 +1,23 @@
 .not-found-content{
   padding: 120px 0;
+  height: 100vh;
+
+  color: black;
+}
+
+.line{
+	height: 120px;
+	background: black;
+	color: white;
 }
 
 h3{
-  font-family: 'Press Start 2P', "Raleway", serif;
-  font-style: normal;
-  font-weight: 400;
+  font-family: "Roboto", serif;
+  font-weight: 600;
   font-size: 24px;
-  line-height: 1;
-
   text-align: center;
-  letter-spacing: -0.1em;
+}
 
-  color: #FFFFFF;
-  text-shadow: -1px 0 rgb(96, 94, 181), 0 1px rgb(96, 94, 181), 1px 0 rgb(96, 94, 181), 0 -1px rgb(96, 94, 181);
+p{
+	color: darkgrey;
 }

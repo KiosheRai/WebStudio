@@ -1,0 +1,31 @@
+.features{
+	margin: 100px 0;
+}
+
+.feature-card{
+	color: white;
+	padding: 30px;
+	background-color: black;
+}
+
+.feature-card:first-child{
+
+	border-radius: 32px 0 0;
+   border: solid transparent;
+   overflow: hidden;
+}
+
+.feature-card:nth-child(2){
+	background-color: white;
+	color: black;
+}
+
+.feature-card:nth-child(3){
+	border-radius: 0 32px 0 0;
+   border: solid transparent;
+   overflow: hidden;
+}
+
+h3{
+	font-weight: 700;
+}
