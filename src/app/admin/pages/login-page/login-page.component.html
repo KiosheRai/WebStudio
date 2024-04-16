@@ -1,0 +1,83 @@
+<app-nav-menu></app-nav-menu>
+<div class="col-10 col-md-7 col-lg-5 col-xl-4 mt-5 m-auto vh-100">
+	<div class="card border-0">
+		<form
+			class="card-body custome-form bg-black text-white rounded-5 py-5 px-5"
+			[formGroup]="form"
+			(ngSubmit)="submit()"
+		>
+			<h3 class="mb-5 text-center">Авторизоваться</h3>
+
+			<div class="mb-3">
+				<label class="form-label fw-medium" for="email">Email</label>
+				<input
+					type="email"
+					id="email"
+					class="form-control form-control-lg"
+					[formControlName]="'email'"
+					[ngClass]="{
+						'border-danger':
+							form.get('email')!.touched && form.get('email')!.invalid
+					}"
+				/>
+				<span
+					*ngIf="form.get('email')!.touched && form.get('email')!.invalid"
+					class="text-danger"
+				>
+					<p *ngIf="form.get('email')!.errors!['email']">Ошибка почты</p>
+					<p *ngIf="form.get('email')!.errors!['required']">Пустое поле</p>
+				</span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label fw-medium" for="password">Пароль</label>
+				<input
+					type="password"
+					id="password"
+					class="form-control form-control-lg"
+					[formControlName]="'password'"
+					[ngClass]="{
+						'border-danger':
+							form.get('password')!.touched &&
+							form.get('password')!.invalid
+					}"
+				/>
+				<span
+					*ngIf="
+						form.get('password')!.touched && form.get('password')!.invalid
+					"
+					class="text-danger"
+				>
+					<p *ngIf="form.get('password')!.errors!['minlength']">
+						Минимальная длина 4
+					</p>
+					<p *ngIf="form.get('password')!.errors!['maxlength']">
+						Максимальная длина 4
+					</p>
+				</span>
+			</div>
+
+			<div class="form-check d-flex justify-content-start mb-3">
+				<input
+					class="form-check-input me-2"
+					type="checkbox"
+					formControlName="remember"
+				/>
+				<label> Запомнить пароль</label>
+			</div>
+			<div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+				{{ error }}
+			</div>
+			<div class="alert" *ngIf="message">
+				{{ message }}
+			</div>
+			<button
+				class="btn btn-primary"
+				type="submit"
+				[disabled]="form.invalid || auth.isAuthenticated() || submitted"
+			>
+				Войти
+			</button>
+		</form>
+	</div>
+</div>

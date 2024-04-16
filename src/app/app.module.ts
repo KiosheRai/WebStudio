@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -20,6 +21,10 @@ import { TilesComponent } from './components/tiles/tiles.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { StartWithComponent } from './components/start-with/start-with.component';
+import { LoginPageComponent } from './admin/pages/login-page/login-page.component';
+import { AuthGuard } from './admin/services/auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardPageComponent } from './admin/pages/dashboard-page/dashboard-page.component';
 
 @NgModule({
 	declarations: [
@@ -38,15 +43,20 @@ import { StartWithComponent } from './components/start-with/start-with.component
 		FractionsPageComponent,
 		TilesComponent,
 		NotFoundPageComponent,
-  FeaturesComponent,
-  StartWithComponent,
+		FeaturesComponent,
+		StartWithComponent,
+		LoginPageComponent,
+  DashboardPageComponent,
 	],
 	imports: [
 		BrowserModule,
+		HttpClientModule,
 		AppRoutingModule,
+		FormsModule,
+		ReactiveFormsModule,
 		FontAwesomeModule
 	],
-	providers: [],
+	providers: [AuthGuard],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	apiKey: 'AIzaSyBoTB9KCNisixMnZVORWJgVRUBFYg93Bcg',
+	firebaseUri: "https://webstudio-ccc7d-default-rtdb.europe-west1.firebasedatabase.app/"
 };
 
 /*

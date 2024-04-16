@@ -1,76 +1,81 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
-import KeenSlider, {KeenSliderInstance} from "keen-slider"
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import KeenSlider, { KeenSliderInstance } from "keen-slider"
+import { Project } from 'src/app/models/Projects';
 
 @Component({
-  selector: 'app-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: [
-    '../../../../node_modules/keen-slider/keen-slider.min.css',
-    './slider.component.css'
-  ]
+	selector: 'app-slider',
+	templateUrl: './slider.component.html',
+	styleUrls: [
+		'../../../../node_modules/keen-slider/keen-slider.min.css',
+		'./slider.component.css'
+	]
 })
 export class SliderComponent {
-  @ViewChild("sliderRef") sliderRef: ElementRef<HTMLElement>
+	@ViewChild("sliderRef") sliderRef: ElementRef<HTMLElement>
 
-  // @ts-ignore
-  slider: KeenSliderInstance
-  isLoopOn = false
+	// @ts-ignore
+	slider: KeenSliderInstance
+	isLoopOn = false
 
-  @Input() title: string
-  @Input() cards: any[]
-  @Input() urlImg: string
+	@Input() title: string
+	@Input() cards: Project[] | null
+	@Input() urlImg: string
 
-  ngAfterViewInit() {
-    if(this.cards.length > 3){
-      this.isLoopOn = false
-    }
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-        loop: this.isLoopOn,
-        slides: {
-          perView: 3,
-          spacing: 32,
-        },
-        defaultAnimation: {
-          duration: 2000
-        },
-      },
-      [
-        (slider) => {
-          let timeout: any
-          let mouseOver = false
+	ngAfterViewInit() {
+		if (!this.cards) {
+			return
+		}
 
-          function clearNextTimeout() {
-            clearTimeout(timeout)
-          }
+		if (this.cards.length > 3) {
+			this.isLoopOn = false
+		}
+		this.slider = new KeenSlider(this.sliderRef.nativeElement, {
+			loop: this.isLoopOn,
+			slides: {
+				perView: 3,
+				spacing: 32,
+			},
+			defaultAnimation: {
+				duration: 2000
+			},
+		},
+			[
+				(slider) => {
+					let timeout: any
+					let mouseOver = false
 
-          function nextTimeout() {
-            clearTimeout(timeout)
-            if (mouseOver) return
-            timeout = setTimeout(() => {
-              slider.next()
-            }, 2500)
-          }
+					function clearNextTimeout() {
+						clearTimeout(timeout)
+					}
 
-          slider.on("created", () => {
-            slider.container.addEventListener("mouseover", () => {
-              mouseOver = true
-              clearNextTimeout()
-            })
-            slider.container.addEventListener("mouseout", () => {
-              mouseOver = false
-              nextTimeout()
-            })
-            nextTimeout()
-          })
-          slider.on("dragStarted", clearNextTimeout)
-          slider.on("animationEnded", nextTimeout)
-          slider.on("updated", nextTimeout)
-        },
-      ]
-    )
-  }
+					function nextTimeout() {
+						clearTimeout(timeout)
+						if (mouseOver) return
+						timeout = setTimeout(() => {
+							slider.next()
+						}, 2500)
+					}
 
-  ngOnDestroy() {
-    if (this.slider) this.slider.destroy()
-  }
+					slider.on("created", () => {
+						slider.container.addEventListener("mouseover", () => {
+							mouseOver = true
+							clearNextTimeout()
+						})
+						slider.container.addEventListener("mouseout", () => {
+							mouseOver = false
+							nextTimeout()
+						})
+						nextTimeout()
+					})
+					slider.on("dragStarted", clearNextTimeout)
+					slider.on("animationEnded", nextTimeout)
+					slider.on("updated", nextTimeout)
+				},
+			]
+		)
+	}
+
+	ngOnDestroy() {
+		if (this.slider) this.slider.destroy()
+	}
 }

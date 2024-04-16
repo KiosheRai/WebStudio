@@ -1,0 +1,14 @@
+.custome-form .btn.disabled, .btn:disabled {
+	background-color: darkgray;
+	color: white;
+}
+
+.custome-form .btn{
+	background-color: white;
+	color: black;
+}
+
+.custome-form .alert{
+	background-color: white;
+	color: black;
+}
