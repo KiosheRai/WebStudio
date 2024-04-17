@@ -1,49 +1,149 @@
 <app-nav-menu></app-nav-menu>
-<div class="container dashboard vh-100">
-	<input
-		class="form-control mb-2"
-		placeholder="Search"
-		[(ngModel)]="searchStr"
-	/>
-	<table class="table table-hover">
-		<thead class="table-dark">
-			<tr>
-				<th>#</th>
-				<th>Название</th>
-				<th>Описание</th>
-				<th>Картина</th>
-				<th>Действия</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				*ngFor="
-					let post of posts | searchPosts : searchStr;
-					let idx = index
-				"
+<form class="card-body container pb-3" [formGroup]="form" (ngSubmit)="submit()">
+	<h3 class="text-center">Добавить проект</h3>
+
+	<div class="row">
+		<div class="col-12 col-md-3">
+			<label class="form-label fw-medium" for="name">Название</label>
+			<input
+				type="text"
+				id="name"
+				class="form-control"
+				[formControlName]="'name'"
+				[ngClass]="{
+					'border-danger':
+						form.get('name')!.touched && form.get('name')!.invalid
+				}"
+			/>
+			<span
+				*ngIf="form.get('name')!.touched && form.get('name')!.invalid"
+				class="text-danger"
 			>
-				<td>{{ idx + 1 }}</td>
-				<td>{{ post.name }}</td>
-				<td>{{ post.description }}</td>
-				<td>
-					<div class="table-image">
-						<img [src]="post.urlPicture" alt="project" />
-					</div>
-				</td>
-				<td>
-					<div class="button-container">
-						<button
-							class="btn btn-primary"
-							[routerLink]="['/admin', 'post', post.id, 'edit']"
-						>
-							Изменить
-						</button>
-						<button class="btn btn-danger" (click)="removePost(post.id!)">
-							Удалить
-						</button>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+				<p *ngIf="form.get('name')!.errors!['maxlength']">
+					Допустимая максимальная длина 32
+				</p>
+				<p *ngIf="form.get('name')!.errors!['required']">Пустое поле</p>
+			</span>
+		</div>
+
+		<div class="col-12 col-md-3">
+			<label class="form-label fw-medium" for="description">Описание</label>
+			<input
+				type="text"
+				id="description"
+				class="form-control"
+				[formControlName]="'description'"
+				[ngClass]="{
+					'border-danger':
+						form.get('description')!.touched &&
+						form.get('description')!.invalid
+				}"
+			/>
+			<span
+				*ngIf="
+					form.get('description')!.touched &&
+					form.get('description')!.invalid
+				"
+				class="text-danger"
+			>
+				<p *ngIf="form.get('description')!.errors!['maxlength']">
+					Допустимая максимальная длина 255
+				</p>
+				<p *ngIf="form.get('description')!.errors!['required']">
+					Пустое поле
+				</p>
+			</span>
+		</div>
+
+		<div class="col-12 col-md-3">
+			<label class="form-label fw-medium" for="imageUri"
+				>Ссылка на изображение</label
+			>
+			<input
+				type="text"
+				id="imageUri"
+				class="form-control"
+				[formControlName]="'imageUri'"
+				[ngClass]="{
+					'border-danger':
+						form.get('imageUri')!.touched && form.get('imageUri')!.invalid
+				}"
+			/>
+			<span
+				*ngIf="
+					form.get('imageUri')!.touched && form.get('imageUri')!.invalid
+				"
+				class="text-danger"
+			>
+				<p *ngIf="form.get('imageUri')!.errors!['maxlength']">
+					Допустимая максимальная длина 255
+				</p>
+				<p *ngIf="form.get('imageUri')!.errors!['required']">Пустое поле</p>
+			</span>
+		</div>
+
+		<div class="col-12 col-md-3 align-content-end">
+			<button
+				class="btn btn-primary w-100 m-0"
+				type="submit"
+				[disabled]="form.invalid"
+			>
+				Добавить
+			</button>
+		</div>
+	</div>
+</form>
+
+<div class="container dashboard vh-100">
+	<div class="row">
+		<input
+			class="form-control mb-2"
+			placeholder="Поиск"
+			[(ngModel)]="searchStr"
+		/>
+		<table class="table table-hover">
+			<thead class="table-dark">
+				<tr>
+					<th>#</th>
+					<th>Название</th>
+					<th>Описание</th>
+					<th>Картина</th>
+					<th>Действия</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					*ngFor="
+						let post of posts | searchPosts : searchStr;
+						let idx = index
+					"
+				>
+					<td>{{ idx + 1 }}</td>
+					<td>{{ post.name }}</td>
+					<td>{{ post.description }}</td>
+					<td>
+						<div class="table-image">
+							<img [src]="post.urlPicture" alt="project" />
+						</div>
+					</td>
+					<td>
+						<div class="button-container">
+							<button
+								class="btn btn-primary"
+								[routerLink]="['/admin', 'post', post.id, 'edit']"
+							>
+								Изменить
+							</button>
+							<button
+								class="btn btn-danger"
+								(click)="removePost(post.id!)"
+							>
+								Удалить
+							</button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

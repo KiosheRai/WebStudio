@@ -27,6 +27,11 @@ a:hover{
   border-radius: 8px;
 }
 
+.btn.disabled, .btn:disabled{
+	background-color: darkgray;
+	color: white;
+}
+
 .btn-primary,
 .btn-secondary,
 .btn-info{

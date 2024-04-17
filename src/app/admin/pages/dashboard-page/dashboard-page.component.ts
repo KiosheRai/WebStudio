@@ -3,6 +3,7 @@ import { Subscription } from "rxjs";
 import { Project } from 'src/app/models/Projects';
 import { ProjectService } from 'src/app/services/project.service';
 import { AlertService } from '../../services/alert.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-dashboard-page',
@@ -16,9 +17,25 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 	dSub: Subscription
 	searchStr = ''
 	alertMessage = false
+	form: FormGroup
 
 	constructor(private projectService: ProjectService,
-		private alert: AlertService) { }
+		private alert: AlertService) {
+		this.form = new FormGroup({
+			name: new FormControl(null, [
+				Validators.required,
+				Validators.maxLength(32)
+			]),
+			description: new FormControl(null, [
+				Validators.required,
+				Validators.maxLength(255)
+			]),
+			imageUri: new FormControl(null, [
+				Validators.required,
+				Validators.maxLength(255)
+			])
+		})
+	}
 
 	ngOnInit(): void {
 		this.pSub = this.projectService
@@ -43,6 +60,24 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 				this.posts = this.posts.filter(post => post.id !== id)
 
 				this.alert.danger('The post has been deleted')
+			})
+	}
+
+	submit() {
+		if (this.form.invalid) {
+			return
+		}
+
+		const post: Project = {
+			name: this.form.value.name,
+			description: this.form.value.description,
+			urlPicture: this.form.value.image,
+		}
+
+		this.projectService.create(post)
+			.subscribe(res => {
+				this.form.reset()
+				this.alert.success('Your post was successfully created.')
 			})
 	}
 }
