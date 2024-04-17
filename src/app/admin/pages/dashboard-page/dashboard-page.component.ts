@@ -1,15 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from "rxjs";
+import { Project } from 'src/app/models/Projects';
+import { ProjectService } from 'src/app/services/project.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
-  selector: 'app-dashboard-page',
-  templateUrl: './dashboard-page.component.html',
-  styleUrls: ['./dashboard-page.component.css']
+	selector: 'app-dashboard-page',
+	templateUrl: './dashboard-page.component.html',
+	styleUrls: ['./dashboard-page.component.css']
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+	posts: Project[]
+	pSub: Subscription
+	dSub: Subscription
+	searchStr = ''
+	alertMessage = false
 
-  ngOnInit(): void {
-  }
+	constructor(private projectService: ProjectService,
+		private alert: AlertService) { }
 
+	ngOnInit(): void {
+		this.pSub = this.projectService
+			.getAll()
+			.subscribe(posts => {
+				this.posts = posts
+			})
+	}
+
+	ngOnDestroy(): void {
+		if (this.pSub) {
+			this.pSub.unsubscribe()
+		}
+		if (this.dSub) {
+			this.dSub.unsubscribe()
+		}
+	}
+
+	removePost(id: string) {
+		this.dSub = this.projectService.delete(id)
+			.subscribe(() => {
+				this.posts = this.posts.filter(post => post.id !== id)
+
+				this.alert.danger('The post has been deleted')
+			})
+	}
 }

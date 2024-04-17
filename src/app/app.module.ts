@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -25,6 +25,15 @@ import { LoginPageComponent } from './admin/pages/login-page/login-page.componen
 import { AuthGuard } from './admin/services/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardPageComponent } from './admin/pages/dashboard-page/dashboard-page.component';
+import { AlertComponent } from './admin/components/alert/alert.component';
+import { SearchPipe } from './admin/pipes/search.pipe';
+import { AuthInterceptor } from './auth.interceptor';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+	provide: HTTP_INTERCEPTORS,
+	multi: true,
+	useClass: AuthInterceptor
+}
 
 @NgModule({
 	declarations: [
@@ -46,7 +55,9 @@ import { DashboardPageComponent } from './admin/pages/dashboard-page/dashboard-p
 		FeaturesComponent,
 		StartWithComponent,
 		LoginPageComponent,
-  DashboardPageComponent,
+		DashboardPageComponent,
+		AlertComponent,
+		SearchPipe,
 	],
 	imports: [
 		BrowserModule,
@@ -56,7 +67,7 @@ import { DashboardPageComponent } from './admin/pages/dashboard-page/dashboard-p
 		ReactiveFormsModule,
 		FontAwesomeModule
 	],
-	providers: [AuthGuard],
+	providers: [AuthGuard, INTERCEPTOR_PROVIDER],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

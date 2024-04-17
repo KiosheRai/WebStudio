@@ -21,10 +21,7 @@ export class LoginPageComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.queryParams.subscribe((params) => {
-			if (params['loginAgain']) {
-				this.message = "Повторите вход!"
-			}
-			else if (params['authFailed']) {
+			if (params['authFailed']) {
 				this.message = "Время жизни вашего токена истекло!"
 			}
 		})

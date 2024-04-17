@@ -3,7 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Observable } from "rxjs";
 import { AuthService } from "./auth.service";
 
-@Injectable()
+@Injectable({
+	providedIn: 'root'
+})
 export class AuthGuard implements CanActivate {
 
 	constructor(private auth: AuthService,
@@ -18,11 +20,7 @@ export class AuthGuard implements CanActivate {
 		}
 		else {
 			this.auth.logout()
-			this.router.navigate(['login'], {
-				queryParams: {
-					loginAgain: true
-				}
-			})
+			this.router.navigate(['login'])
 			return false;
 		}
 	}

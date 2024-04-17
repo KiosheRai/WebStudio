@@ -17,21 +17,21 @@ a:hover{
 .btn{
   outline: none;
   border: none;
+  font-family: "Raleway", serif;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+
+  border-radius: 8px;
 }
 
 .btn-primary,
 .btn-secondary,
 .btn-info{
   padding: 18px 64px;
-  font-family: "Raleway", serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 100%;
-
   color: #FFFFFF;
-
-  border-radius: 8px;
 }
 
 .btn-primary{

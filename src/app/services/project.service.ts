@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Project } from '../models/Projects';
 import { map, Observable } from "rxjs";
 import { environment } from "../../environments/environment";
+import { FbCreateResponse } from '../models/FbCreateProjectResponse';
 
 @Injectable({
 	providedIn: 'root'
@@ -11,17 +12,16 @@ export class ProjectService {
 
 	constructor(private _http: HttpClient) { }
 
-	// create(post: Project): Observable<Project> {
-	// 	return this.http.post<any>(`${environment.fbDbUrl}/posts.json`, post)
-	// 		.pipe(map((response: IFbCreateResponse) => {
-	// 			const newPost: Project = {
-	// 				...post,
-	// 				id: response.name,
-	// 				date: new Date(post.date)
-	// 			}
-	// 			return newPost
-	// 		}))
-	// }
+	create(post: Project): Observable<Project> {
+		return this._http.post<any>(`${environment.firebaseUri}/Projects.json`, post)
+			.pipe(map((response: FbCreateResponse) => {
+				const newPost: Project = {
+					...post,
+					id: response.name,
+				}
+				return newPost
+			}))
+	}
 
 	getAll(): Observable<Project[]> {
 		return this._http.get<Project[]>(`${environment.firebaseUri}/Projects.json`)
@@ -40,22 +40,21 @@ export class ProjectService {
 			}))
 	}
 
-	// getById(id: string): Observable<Project> {
-	// 	return this.http.get<Project>(`${environment.fbDbUrl}/posts/${id}.json`)
-	// 		.pipe(map((post: Project) => {
-	// 			const newPost: Project = {
-	// 				...post, id,
-	// 				date: new Date(post.date)
-	// 			}
-	// 			return newPost
-	// 		}))
-	// }
+	getById(id: string): Observable<Project> {
+		return this._http.get<Project>(`${environment.firebaseUri}/Projects/${id}.json`)
+			.pipe(map((post: Project) => {
+				const newPost: Project = {
+					...post, id,
+				}
+				return newPost
+			}))
+	}
 
-	// delete(id: string): Observable<void> {
-	// 	return this.http.delete<void>(`${environment.fbDbUrl}/posts/${id}.json`)
-	// }
+	delete(id: string): Observable<void> {
+		return this._http.delete<void>(`${environment.firebaseUri}/Projects/${id}.json`)
+	}
 
-	// update(post: Project): Observable<Project> {
-	// 	return this.http.patch<IPost>(`${environment.fbDbUrl}/posts/${post.id!}.json`, post)
-	// }
+	update(post: Project): Observable<Project> {
+		return this._http.patch<Project>(`${environment.firebaseUri}/Projects/${post.id!}.json`, post)
+	}
 }
