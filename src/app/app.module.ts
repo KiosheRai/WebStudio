@@ -28,6 +28,7 @@ import { DashboardPageComponent } from './admin/pages/dashboard-page/dashboard-p
 import { AlertComponent } from './admin/components/alert/alert.component';
 import { SearchPipe } from './admin/pipes/search.pipe';
 import { AuthInterceptor } from './auth.interceptor';
+import { ImageTextComponent } from './components/image-text/image-text.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
 	provide: HTTP_INTERCEPTORS,
@@ -58,6 +59,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
 		DashboardPageComponent,
 		AlertComponent,
 		SearchPipe,
+		ImageTextComponent,
 	],
 	imports: [
 		BrowserModule,

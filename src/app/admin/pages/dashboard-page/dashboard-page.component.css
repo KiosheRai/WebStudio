@@ -18,3 +18,9 @@ img {
 	display: flex;
 	flex-direction: column;
  }
+
+ .error-text{
+	position: absolute;
+	translate: 20px 20%;
+	bottom: 0px;
+ }

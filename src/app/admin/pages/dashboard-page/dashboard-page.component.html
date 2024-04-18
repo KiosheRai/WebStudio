@@ -3,7 +3,7 @@
 	<h3 class="text-center">Добавить проект</h3>
 
 	<div class="row">
-		<div class="col-12 col-md-3">
+		<div class="col-12 col-md-3 position-relative">
 			<label class="form-label fw-medium" for="name">Название</label>
 			<input
 				type="text"
@@ -17,7 +17,7 @@
 			/>
 			<span
 				*ngIf="form.get('name')!.touched && form.get('name')!.invalid"
-				class="text-danger"
+				class="text-danger error-text"
 			>
 				<p *ngIf="form.get('name')!.errors!['maxlength']">
 					Допустимая максимальная длина 32
@@ -26,7 +26,7 @@
 			</span>
 		</div>
 
-		<div class="col-12 col-md-3">
+		<div class="col-12 col-md-3 position-relative">
 			<label class="form-label fw-medium" for="description">Описание</label>
 			<input
 				type="text"
@@ -44,7 +44,7 @@
 					form.get('description')!.touched &&
 					form.get('description')!.invalid
 				"
-				class="text-danger"
+				class="text-danger error-text"
 			>
 				<p *ngIf="form.get('description')!.errors!['maxlength']">
 					Допустимая максимальная длина 255
@@ -55,10 +55,8 @@
 			</span>
 		</div>
 
-		<div class="col-12 col-md-3">
-			<label class="form-label fw-medium" for="imageUri"
-				>Ссылка на изображение</label
-			>
+		<div class="col-12 col-md-3 position-relative">
+			<label class="form-label fw-medium" for="imageUri">Изображение</label>
 			<input
 				type="text"
 				id="imageUri"
@@ -73,7 +71,7 @@
 				*ngIf="
 					form.get('imageUri')!.touched && form.get('imageUri')!.invalid
 				"
-				class="text-danger"
+				class="text-danger error-text"
 			>
 				<p *ngIf="form.get('imageUri')!.errors!['maxlength']">
 					Допустимая максимальная длина 255

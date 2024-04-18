@@ -1,5 +1,6 @@
-nav{
+.nav{
 	padding-top: 30px;
+	width: 50%;
 }
 
 a{
@@ -14,7 +15,10 @@ img{
   transform: translateY(-10px);
 }
 
-.left-menu, .right-menu{
-  width: 416px;
-  justify-content: space-between;
-}
+
+
+@media (max-width: 992px) {
+	.nav{
+		width: 100%;
+	}
+ }

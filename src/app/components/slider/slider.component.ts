@@ -22,13 +22,13 @@ export class SliderComponent {
 	@Input() urlImg: string
 
 	ngAfterViewInit() {
-		if (!this.cards) {
-			return
-		}
+		// if (!this.cards) {
+		// 	return
+		// }
 
-		if (this.cards.length > 3) {
-			this.isLoopOn = false
-		}
+		// if (this.cards.length > 3) {
+		// 	this.isLoopOn = false
+		// }
 		this.slider = new KeenSlider(this.sliderRef.nativeElement, {
 			loop: this.isLoopOn,
 			slides: {
@@ -38,6 +38,15 @@ export class SliderComponent {
 			defaultAnimation: {
 				duration: 2000
 			},
+			breakpoints: {
+				"(min-width: 400px)": {
+					slides: { perView: 1, spacing: 5 },
+				},
+				"(min-width: 1000px)": {
+					slides: { perView: 3, spacing: 10 },
+				},
+			},
+
 		},
 			[
 				(slider) => {
