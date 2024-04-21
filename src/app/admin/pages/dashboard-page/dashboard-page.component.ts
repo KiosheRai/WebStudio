@@ -71,7 +71,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 		const post: Project = {
 			name: this.form.value.name,
 			description: this.form.value.description,
-			urlPicture: this.form.value.image,
+			urlPicture: this.form.value.imageUri,
 		}
 
 		this.projectService.create(post)
